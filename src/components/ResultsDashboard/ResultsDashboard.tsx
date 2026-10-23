@@ -19,7 +19,7 @@ export default function ResultsDashboard({ result, onReset, onEdit }: ResultsDas
   const urgencyIsHigh = result.urgency === 'critical' || result.urgency === 'high';
 
   return (
-    <div className={styles.dashboard} aria-label="Analysis results">
+    <div className={`${styles.dashboard} max-w-5xl`} aria-label="Analysis results">
       {/* Dashboard Header */}
       <div className={styles.dashboardHeader}>
         <div className={styles.headerLeft}>
@@ -65,10 +65,10 @@ export default function ResultsDashboard({ result, onReset, onEdit }: ResultsDas
       )}
 
       {/* Primary Cards Grid */}
-      <div className={styles.grid}>
+      <div className={`${styles.grid} grid grid-cols-1 md:grid-cols-2 gap-4`}>
 
         {/* 1. What I Understand */}
-        <section className={`${styles.card} ${styles.cardWide} animate-fade-in delay-1`} aria-labelledby="understanding-title">
+        <section className={`${styles.card} ${styles.cardWide} md:col-span-2 col-span-full animate-fade-in delay-1`} aria-labelledby="understanding-title">
           <div className="section-header">
             <div className="section-icon" aria-hidden="true">
               <Brain size={16} color="white" />
@@ -83,7 +83,7 @@ export default function ResultsDashboard({ result, onReset, onEdit }: ResultsDas
         </section>
 
         {/* 2. Recommended Action — MOST PROMINENT */}
-        <section className={`${styles.card} ${styles.cardWide} ${styles.recommendedCard} animate-fade-in delay-2`} aria-labelledby="action-title">
+        <section className={`${styles.card} ${styles.cardWide} ${styles.recommendedCard} md:col-span-2 col-span-full animate-fade-in delay-2`} aria-labelledby="action-title">
           <div className="section-header">
             <div className={`section-icon ${styles.iconGold}`} aria-hidden="true">
               <Target size={16} color="white" />
@@ -96,7 +96,9 @@ export default function ResultsDashboard({ result, onReset, onEdit }: ResultsDas
         {/* 3. Key Details */}
         {(result.extracted_information.entities.length > 0 ||
           result.extracted_information.dates.length > 0 ||
-          result.extracted_information.locations.length > 0) && (
+          result.extracted_information.locations.length > 0 ||
+          result.extracted_information.constraints.length > 0 ||
+          result.extracted_information.missingInformation.length > 0) && (
           <section className={`${styles.card} animate-fade-in delay-3`} aria-labelledby="details-title">
             <div className="section-header">
               <div className="section-icon" aria-hidden="true">
@@ -237,7 +239,7 @@ export default function ResultsDashboard({ result, onReset, onEdit }: ResultsDas
 
         {/* 7. Warnings */}
         {result.warnings.length > 0 && (
-          <section className={`${styles.card} ${styles.warningCard} animate-fade-in delay-6`} aria-labelledby="warnings-title">
+          <section className={`${styles.card} ${styles.warningCard} ${result.resources.length === 0 ? `${styles.cardWide} md:col-span-2 col-span-full` : ''} animate-fade-in delay-6`} aria-labelledby="warnings-title">
             <div className="section-header">
               <div className={`section-icon ${styles.iconDanger}`} aria-hidden="true">
                 <ShieldAlert size={16} color="white" />
@@ -257,7 +259,7 @@ export default function ResultsDashboard({ result, onReset, onEdit }: ResultsDas
 
         {/* 8. Useful Resources */}
         {result.resources.length > 0 && (
-          <section className={`${styles.card} animate-fade-in delay-7`} aria-labelledby="resources-title">
+          <section className={`${styles.card} ${result.warnings.length === 0 ? `${styles.cardWide} md:col-span-2 col-span-full` : ''} animate-fade-in delay-7`} aria-labelledby="resources-title">
             <div className="section-header">
               <div className="section-icon" aria-hidden="true">
                 <Link2 size={16} color="white" />
@@ -293,7 +295,7 @@ export default function ResultsDashboard({ result, onReset, onEdit }: ResultsDas
         )}
 
         {/* 9. Confidence Level */}
-        <section className={`${styles.card} ${styles.cardWide} animate-fade-in delay-8`} aria-labelledby="confidence-title">
+        <section className={`${styles.card} ${styles.cardWide} md:col-span-2 col-span-full animate-fade-in delay-8`} aria-labelledby="confidence-title">
           <div className="section-header">
             <div className="section-icon" aria-hidden="true">
               <BarChart3 size={16} color="white" />
