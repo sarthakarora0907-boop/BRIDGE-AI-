@@ -60,6 +60,31 @@
   flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  min-width: 0;
+}
+
+.goalContainer {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  background: var(--surface-secondary);
+  border: 1px solid var(--surface-border);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  min-width: 0;
+  line-height: 1.4;
+  margin-right: 0.5rem;
+  flex-shrink: 1;
+}
+
+.goalLabel {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.goalValue {
+  color: var(--color-brand-500);
 }
 
 .desktopNav ul {

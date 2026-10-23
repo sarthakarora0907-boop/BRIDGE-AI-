@@ -99,7 +99,7 @@ export default function ResultsDashboard({ result, onReset, onEdit }: ResultsDas
           result.extracted_information.locations.length > 0 ||
           result.extracted_information.constraints.length > 0 ||
           result.extracted_information.missingInformation.length > 0) && (
-          <section className={`${styles.card} animate-fade-in delay-3`} aria-labelledby="details-title">
+          <section className={`${styles.card} ${styles.detailsCard} animate-fade-in delay-3`} aria-labelledby="details-title">
             <div className="section-header">
               <div className="section-icon" aria-hidden="true">
                 <MapPin size={16} color="white" />

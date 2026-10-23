@@ -12,7 +12,11 @@ const NAV_LINKS = [
   { href: '#about', label: 'About' },
 ];
 
-export default function Header() {
+interface HeaderProps {
+  goal?: string;
+}
+
+export default function Header({ goal }: HeaderProps = {}) {
   const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -50,6 +54,23 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className={styles.desktopNav} aria-label="Main navigation">
+          {goal ? (
+            <div
+              className={`hidden lg:block truncate max-w-xs ${styles.goalContainer}`}
+              title={`Your goal: ${goal}`}
+            >
+              <span className={styles.goalLabel}>Your goal:</span>{' '}
+              <span className={styles.goalValue}>{goal}</span>
+            </div>
+          ) : (
+            <div
+              className={`hidden lg:block truncate max-w-xs ${styles.goalContainer}`}
+              style={{ display: 'none' }}
+              aria-hidden="true"
+            >
+              <span className={styles.goalLabel}>Your goal:</span>
+            </div>
+          )}
           <ul role="list">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>

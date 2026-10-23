@@ -140,7 +140,7 @@ export default function HomePage() {
         Skip to main content
       </a>
 
-      <Header />
+      <Header goal={result?.intent} />
 
       <main id="main-content" className={styles.main}>
         {/* Hero is only shown on idle state */}

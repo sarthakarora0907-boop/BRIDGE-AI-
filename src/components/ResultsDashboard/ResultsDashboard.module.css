@@ -184,11 +184,16 @@
 }
 
 /* Key details */
+.detailsCard {
+  padding-bottom: 2rem;
+}
+
 .detailList {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
   min-width: 0;
+  padding-bottom: 0.75rem;
 }
 
 .detailRow {
@@ -203,6 +208,7 @@
 
 .detailRow:last-child {
   border-bottom: none;
+  padding-bottom: 0.75rem;
 }
 
 .detailRow dt {
@@ -225,6 +231,11 @@
   overflow-wrap: break-word;
   line-height: 1.45;
   margin: 0;
+}
+
+.missingInfo {
+  margin-top: 0.25rem;
+  padding-bottom: 0.75rem;
 }
 
 .missingInfo dt,

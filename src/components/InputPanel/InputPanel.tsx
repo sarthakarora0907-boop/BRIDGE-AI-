@@ -71,6 +71,12 @@ export default function InputPanel({ onSubmit, isLoading }: InputPanelProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const recognitionRef = useRef<ISpeechRecognition | null>(null);
+  const baseTextRef = useRef('');
+  const textRef = useRef(text);
+
+  useEffect(() => {
+    textRef.current = text;
+  }, [text]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -154,6 +160,7 @@ export default function InputPanel({ onSubmit, isLoading }: InputPanelProps) {
     if (isListening && recognitionRef.current) {
       recognitionRef.current.stop();
       setIsListening(false);
+      baseTextRef.current = '';
       return;
     }
 
@@ -165,24 +172,34 @@ export default function InputPanel({ onSubmit, isLoading }: InputPanelProps) {
 
     if (!SpeechRecognitionAPI) return;
 
+    // Preserve any existing text before speech begins
+    const currentVal = textRef.current;
+    baseTextRef.current = currentVal ? (currentVal.endsWith(' ') ? currentVal : `${currentVal} `) : '';
+
     const recognition = new SpeechRecognitionAPI();
     recognition.continuous = false;
     recognition.interimResults = true;
     recognition.lang = 'en-US';
 
     recognition.onstart = () => setIsListening(true);
-    recognition.onend = () => setIsListening(false);
-    recognition.onerror = () => setIsListening(false);
+    recognition.onend = () => {
+      setIsListening(false);
+      baseTextRef.current = '';
+    };
+    recognition.onerror = () => {
+      setIsListening(false);
+      baseTextRef.current = '';
+    };
 
     recognition.onresult = (event: ISpeechRecognitionEvent) => {
-      const transcript = Array.from({ length: event.results.length })
-        .map((_, i) => event.results[i][0].transcript)
-        .join('');
-      setText((prev) => {
-        const newText = prev ? `${prev} ${transcript}` : transcript;
-        setCharCount(newText.length);
-        return newText;
-      });
+      let speechTranscript = '';
+      for (let i = 0; i < event.results.length; i++) {
+        speechTranscript += event.results[i][0].transcript;
+      }
+      const newText = baseTextRef.current ? `${baseTextRef.current}${speechTranscript}` : speechTranscript;
+      setText(newText);
+      setCharCount(newText.length);
+      setTextError(null);
     };
 
     recognitionRef.current = recognition;
