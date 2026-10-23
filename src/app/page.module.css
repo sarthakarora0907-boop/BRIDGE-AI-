@@ -1,0 +1,31 @@
+.main {
+  min-height: calc(100vh - var(--header-height));
+}
+
+/* Skip link for keyboard accessibility */
+.skipLink {
+  position: absolute;
+  top: -100%;
+  left: var(--space-lg);
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-brand-500);
+  color: white;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skipLink:focus {
+  top: var(--space-sm);
+}
+
+/* State wrappers */
+.stateWrapper {
+  padding: var(--space-2xl) 0;
+}
+
+.resultsWrapper {
+  padding: var(--space-2xl) 0;
+}
