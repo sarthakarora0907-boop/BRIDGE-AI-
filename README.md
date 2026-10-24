@@ -1,3 +1,7 @@
+## 🚀 Live Demo
+
+[**Try Bridge AI →**](https://bridge-ai-three.vercel.app)
+
 # 🚀 BRIDGE AI
 
 ### Turn messy problems into clear next steps.
