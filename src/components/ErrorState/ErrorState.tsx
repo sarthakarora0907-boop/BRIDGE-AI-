@@ -14,28 +14,28 @@ interface ErrorStateProps {
 
 const ERROR_MESSAGES: Record<APIError['code'], { title: string; description: string; showConfig: boolean }> = {
   INVALID_INPUT: {
-    title: 'Invalid input',
-    description: 'Your request could not be processed as submitted. Please check your input and try again.',
+    title: 'Input not recognised',
+    description: 'Your request could not be processed as submitted. Try describing your situation in more detail, or choose a category to help guide the analysis.',
     showConfig: false,
   },
   AI_ERROR: {
-    title: 'Something went wrong',
-    description: 'There was a problem processing your request with the AI service. Please try again.',
+    title: 'Analysis failed',
+    description: 'The AI service could not complete its analysis. This is usually temporary — please try again, or use Demo Simulation to see an example result.',
     showConfig: false,
   },
   RATE_LIMIT: {
     title: 'Too many requests',
-    description: 'You have sent too many requests in a short period. Please wait a moment and try again.',
+    description: 'You have sent too many requests in a short time. Please wait 30–60 seconds and try again. You can also try the Demo Simulation while you wait.',
     showConfig: false,
   },
   SERVER_ERROR: {
-    title: 'Server error',
-    description: 'An unexpected server error occurred. Please try again in a moment.',
+    title: 'Something went wrong',
+    description: 'An unexpected error occurred on our end. Please try again in a moment. If the problem persists, use Demo Simulation to explore Bridge AI while we recover.',
     showConfig: false,
   },
   MISSING_CONFIG: {
-    title: 'Service unavailable',
-    description: 'The AI service is not properly configured. If you are a developer, check that GEMINI_API_KEY is set in .env.local.',
+    title: 'Live analysis unavailable',
+    description: 'Live Gemini analysis is not available right now. You can still explore Bridge AI using the Demo Simulation below, which shows a realistic example of what the AI produces.',
     showConfig: true,
   },
 };

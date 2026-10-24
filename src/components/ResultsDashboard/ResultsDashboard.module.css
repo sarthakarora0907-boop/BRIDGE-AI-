@@ -31,7 +31,7 @@
 .headerActions {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 0.375rem;
   flex-wrap: wrap;
 }
 
@@ -608,12 +608,14 @@
   }
 
   .bottomActions {
-    flex-direction: column;
-    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .bottomActions .btn {
     justify-content: center;
+    flex: 1 1 auto;
+    min-width: 130px;
   }
 }
 

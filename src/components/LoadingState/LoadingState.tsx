@@ -51,7 +51,7 @@ export default function LoadingState() {
           {currentStep?.message}
         </p>
         <p className={styles.subText}>
-          Bridge AI is analysing your situation using Gemini
+          Gemini AI is analysing your situation — this may take a few moments
         </p>
       </div>
 

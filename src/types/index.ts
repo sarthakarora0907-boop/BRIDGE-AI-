@@ -122,10 +122,10 @@ export interface LoadingStep {
 }
 
 export const LOADING_STEPS: LoadingStep[] = [
-  { message: 'Understanding your request…', duration: 1500 },
-  { message: 'Structuring the problem…', duration: 2000 },
-  { message: 'Analysing key information…', duration: 2000 },
-  { message: 'Preparing your next steps…', duration: 1500 },
+  { message: 'Reading your situation…', duration: 1500 },
+  { message: 'Identifying key details…', duration: 2000 },
+  { message: 'Evaluating your options…', duration: 2000 },
+  { message: 'Building your action plan…', duration: 1500 },
 ];
 
 /**

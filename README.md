@@ -1,10 +1,10 @@
-## 🚀 Live Demo
-
-[**Try Bridge AI →**](https://bridge-ai-three.vercel.app)
-
 # 🚀 BRIDGE AI
 
 ### Turn messy problems into clear next steps.
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-bridge--ai--three.vercel.app-6366f1?style=for-the-badge&logo=vercel)](https://bridge-ai-three.vercel.app)
+
+> **[▶ Try Bridge AI Live →](https://bridge-ai-three.vercel.app)**
 
 BRIDGE AI is a Gemini-powered AI application that converts messy, real-world user problems into **structured, understandable, and actionable guidance**.
 
@@ -33,6 +33,7 @@ BRIDGE AI analyzes the request and provides:
 - 🚨 Important warnings
 - 🔗 Useful resources
 - 📊 Confidence level
+- 📋 Copy result & ⬇️ Download as .txt
 
 ### Core Flow
 
@@ -72,13 +73,9 @@ BRIDGE AI is designed to clearly communicate uncertainty instead of presenting e
 
 For sensitive situations, it encourages users to confirm information through appropriate **official or professional sources**.
 
-The Gemini API key is kept server-side using environment variables.
+The Gemini API key is kept server-side using environment variables and is **never exposed to the browser**.
 
-```env
-GEMINI_API_KEY=your_api_key_here
-```
-
-**Never commit or publicly expose your API key.**
+> ⚠️ **Never commit or publicly expose your API key.** Add `.env.local` to `.gitignore` (already configured).
 
 ---
 
@@ -88,7 +85,7 @@ GEMINI_API_KEY=your_api_key_here
 - **React**
 - **TypeScript**
 - **Google Gemini**
-- **Tailwind CSS**
+- **Vanilla CSS** (CSS Modules + custom design system)
 - **Jest**
 - **Vercel**
 
@@ -111,7 +108,7 @@ npm install
 
 ### 3. Add Gemini API Key
 
-Create `.env.local`:
+Create `.env.local` (this file is git-ignored — never commit it):
 
 ```env
 GEMINI_API_KEY=your_api_key_here
@@ -123,11 +120,9 @@ GEMINI_API_KEY=your_api_key_here
 npm run dev
 ```
 
-Open:
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-```text
-https://bridge-ai-three.vercel.app
-```
+> **Live production:** [https://bridge-ai-three.vercel.app](https://bridge-ai-three.vercel.app)
 
 ---
 
@@ -144,3 +139,4 @@ BRIDGE AI explores how AI can act as a **universal bridge between human intent a
 **Sarthak Arora**
 
 Built with ❤️ using Google Gemini.
+
