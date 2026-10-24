@@ -126,7 +126,7 @@ npm run dev
 Open:
 
 ```text
-http://localhost:3000
+https://bridge-ai-three.vercel.app
 ```
 
 ---
